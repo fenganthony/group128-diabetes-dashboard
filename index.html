@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diabetes Monitoring Dashboard — Group 128</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><div><span class="eyebrow">GROUP 128 · SMART ON FHIR</span><h1>Diabetes Monitoring Dashboard</h1><p>Evidence-linked review of synthetic patient data</p></div><div class="header-actions"><div class="badges"><span>Read only</span><span>Synthetic data</span></div><button id="startTour">Start 2-minute guided demo</button></div></header>
+<main>
+  <section class="patient"><div><small>PATIENT</small><h2>Jordan Lee</h2><p>DOB 04/18/1968 · MRN SYN-1042</p></div><div class="refresh">Last refreshed<br><strong>10:42 AM</strong></div></section>
+  <section class="metrics" aria-label="Current measures">
+    <article><span>HbA1c</span><strong>8.1%</strong><small>Aug 14, 2026</small></article>
+    <article><span>Glucose</span><strong>164 <em>mg/dL</em></strong><small>Sep 02, 2026</small></article>
+    <article><span>BMI</span><strong>31.2 <em>kg/m²</em></strong><small>Sep 02, 2026</small></article>
+    <article><span>Blood pressure</span><strong>—</strong><small>No supported result</small></article>
+  </section>
+  <section class="layout">
+    <article class="panel chart-panel"><div class="panel-head"><div><small>LONGITUDINAL REVIEW</small><h2>HbA1c trend</h2></div><span class="status">↑ 0.7 pts</span></div>
+      <svg viewBox="0 0 720 270" role="img" aria-label="HbA1c increased from 6.9 to 8.1 percent">
+        <g class="grid"><line x1="55" y1="40" x2="690" y2="40"/><line x1="55" y1="105" x2="690" y2="105"/><line x1="55" y1="170" x2="690" y2="170"/><line x1="55" y1="235" x2="690" y2="235"/></g>
+        <g class="labels"><text x="16" y="45">9%</text><text x="16" y="110">8%</text><text x="16" y="175">7%</text><text x="16" y="240">6%</text><text x="55" y="263">Nov 2025</text><text x="255" y="263">Feb 2026</text><text x="455" y="263">May 2026</text><text x="625" y="263">Aug 2026</text></g>
+        <polyline points="70,182 270,163 470,144 660,99"/><g class="dots"><circle cx="70" cy="182" r="6"/><circle cx="270" cy="163" r="6"/><circle cx="470" cy="144" r="6"/><circle cx="660" cy="99" r="7"/></g>
+      </svg>
+      <div class="legend"><span><i></i> Supported HbA1c observations</span><button id="openEvidence">View source evidence →</button></div>
+    </article>
+    <aside>
+      <article class="panel"><small>REVIEW CUES</small><h2>Needs attention</h2><button class="cue" id="openEvidence2"><b>HbA1c increased</b><span>7.4% → 8.1% across supported results</span></button><div class="cue warning"><b>Blood pressure unavailable</b><span>No supported result in selected period</span></div></article>
+      <article class="panel meds"><small>ACTIVE MEDICATIONS</small><h2>MedicationRequest</h2><p><b>Metformin</b><span>500 mg · active</span></p><p><b>Insulin glargine</b><span>active</span></p></article>
+    </aside>
+  </section>
+  <section class="panel encounters"><div><small>RECENT ENCOUNTERS</small><h2>Clinical activity</h2></div><div><b>Sep 02, 2026</b><span>Primary care follow-up</span></div><div><b>Aug 14, 2026</b><span>Laboratory encounter</span></div></section>
+  <p class="disclaimer">Educational prototype. This dashboard organizes synthetic records and does not diagnose disease or recommend treatment.</p>
+</main>
+<dialog id="evidence"><button class="close" aria-label="Close">×</button><small>EVIDENCE DETAIL</small><h2>HbA1c increased</h2><p class="rule"><b>Demonstration rule:</b> The latest supported HbA1c value is higher than the immediately preceding supported value.</p><table><thead><tr><th>Date</th><th>Value</th><th>LOINC</th><th>FHIR source</th></tr></thead><tbody><tr><td>Aug 14, 2026</td><td>8.1%</td><td>4548-4</td><td>Observation/obs-a1c-004</td></tr><tr><td>May 09, 2026</td><td>7.4%</td><td>4548-4</td><td>Observation/obs-a1c-003</td></tr></tbody></table><p class="quality">✓ Recognized code &nbsp; ✓ Expected unit &nbsp; ✓ Valid effective dates</p></dialog>
+<div id="tourCard" role="status" aria-live="polite" hidden><b id="tourTitle"></b><span id="tourText"></span><div><button id="tourStop">Exit</button><button id="tourNext">Next →</button></div></div>
+<script src="app.js"></script>
+</body></html>
